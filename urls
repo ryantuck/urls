@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+import os
+import webbrowser
+import yaml
+
+import click
+
+
+def _cfg():
+    cfg_path = '~/.urls_config.yml'
+    abs_path = os.path.expanduser(cfg_path)
+    with open(abs_path) as f:
+        return yaml.load(f)
+
+
+def _url(base, option):
+    cfg = _cfg()
+    url = cfg[base]['base_url']
+    if option:
+        url += cfg[base]['opts'][option]
+    return url
+
+
+def _open(url):
+    return webbrowser.open(url)
+
+
+@click.command()
+@click.argument('base')
+@click.argument('option', required=False, default=None)
+def cli(base, option):
+    _open(_url(base, option))
+
+
+if __name__ == '__main__':
+    cli(obj={})
