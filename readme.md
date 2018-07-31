@@ -12,7 +12,7 @@ $ urls github requests
 ## install
 
 ```
-$ git clone https://github.com/ryantuck/urls ~/src/urls
+$ git clone https://github.com/ryantuck/urls.git ~/src/urls
 $ ln -s ~/src/urls/urls /usr/local/bin/urls
 ```
 
